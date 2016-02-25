@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+</h:head>
+<h:body>
+	<h1>Primefaces</h1>
+
+	<h:form>
+		<h:panelGrid columns="2">
+			<p:outputLabel value="Name" for="name" />
+			<p:inputText id="name" value="#{personController.person.name}" />
+
+			<p:outputLabel value="Age" for="age" />
+			<p:calendar id="age" value="#{personController.person.birthDay}" />
+		</h:panelGrid>
+		<p:commandButton update="table, @form" value="ADD" action="#{personController.addPerson}" />
+	</h:form>
+
+	<p:dataTable id="table" value="#{personController.personList}"
+		var="person">
+		<p:column headerText="Id">
+			<h:outputText value="#{person.id}" />
+		</p:column>
+		<p:column headerText="Name">
+			<h:outputText value="#{person.name}" />
+		</p:column>
+		<p:column headerText="BirthDay">
+			<h:outputText value="#{person.birthDay}" />
+		</p:column>
+
+	</p:dataTable>
+
+
+</h:body>
+</html>
